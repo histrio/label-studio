@@ -68,6 +68,18 @@ from io_storages.s3.api import (
     S3ImportStorageSyncAPI,
     S3ImportStorageValidateAPI,
 )
+from io_storages.couchdb.api import (
+    CouchDBExportStorageDetailAPI,
+    CouchDBExportStorageFormLayoutAPI,
+    CouchDBExportStorageListAPI,
+    CouchDBExportStorageSyncAPI,
+    CouchDBExportStorageValidateAPI,
+    CouchDBImportStorageDetailAPI,
+    CouchDBImportStorageFormLayoutAPI,
+    CouchDBImportStorageListAPI,
+    CouchDBImportStorageSyncAPI,
+    CouchDBImportStorageValidateAPI,
+)
 
 app_name = 'storages'
 
@@ -122,6 +134,18 @@ _api_urlpatterns = [
     path('export/redis/<int:pk>/sync', RedisExportStorageSyncAPI.as_view(), name='export-storage-redis-sync'),
     path('export/redis/validate', RedisExportStorageValidateAPI.as_view(), name='export-storage-redis-validate'),
     path('export/redis/form', RedisExportStorageFormLayoutAPI.as_view(), name='export-storage-redis-form'),
+    # CouchDB
+    path('couchdb/', CouchDBImportStorageListAPI.as_view(), name='storage-couchdb-list'),
+    path('couchdb/<int:pk>', CouchDBImportStorageDetailAPI.as_view(), name='storage-couchdb-detail'),
+    path('couchdb/<int:pk>/sync', CouchDBImportStorageSyncAPI.as_view(), name='storage-couchdb-sync'),
+    path('couchdb/validate', CouchDBImportStorageValidateAPI.as_view(), name='storage-couchdb-validate'),
+    path('couchdb/form', CouchDBImportStorageFormLayoutAPI.as_view(), name='storage-couchdb-form'),
+    path('export/couchdb', CouchDBExportStorageListAPI.as_view(), name='export-storage-couchdb-list'),
+    path('export/couchdb/<int:pk>', CouchDBExportStorageDetailAPI.as_view(), name='export-storage-couchdb-detail'),
+    path('export/couchdb/<int:pk>/sync', CouchDBExportStorageSyncAPI.as_view(), name='export-storage-couchdb-sync'),
+    path('export/couchdb/validate', CouchDBExportStorageValidateAPI.as_view(), name='export-storage-couchdb-validate'),
+    path('export/couchdb/form', CouchDBExportStorageFormLayoutAPI.as_view(), name='export-storage-couchdb-form'),
+
 ]
 if settings.ENABLE_LOCAL_FILES_STORAGE:
     _api_urlpatterns += [

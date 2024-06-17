@@ -42,6 +42,7 @@ from .utils import (
     make_project,
     ml_backend_mock,
     redis_client_mock,
+    couchdb_client_mock,
     register_ml_backend_mock,
     signin,
 )
@@ -313,6 +314,12 @@ def azure_client():
 @pytest.fixture(autouse=True)
 def redis_client():
     with redis_client_mock():
+        yield
+
+
+@pytest.fixture(autouse=True)
+def couchdb_client():
+    with couchdb_client_mock():
         yield
 
 

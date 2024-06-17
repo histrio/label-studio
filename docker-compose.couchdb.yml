@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  couchdb:
+    image: couchdb:3.3
+    restart: unless-stopped
+    ports:
+      - "5984:5984"
+    volumes:
+      - couchdb-data:/opt/couchdb/data
+    environment:
+      - COUCHDB_USER=${COUCHDB_USER:-couchdb_admin_do_not_use_in_production}
+      - COUCHDB_PASSWORD=${COUCHDB_PASSWORD:-couchdb_admin_do_not_use_in_production}
+
+volumes:
+  couchdb-data:

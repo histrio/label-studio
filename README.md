@@ -79,6 +79,16 @@ If you do not have a static IP address, you must create an entry in your hosts f
 browser can access the MinIO server. For more detailed instructions, please refer to [our guide on storing data](docs/source/guide/storedata.md).
 
 
+### Run with Docker Compose + CouchDB
+
+You can also run it with an additional CouchDB server for NoSQL database storage. To start Label Studio with CouchDB, run the following command:
+
+````bash
+# Add sudo on Linux if you are not a member of the docker group
+docker-compose -f docker-compose.yml -f docker-compose.couchdb.yml up -d
+````
+
+
 ### Install locally with pip
 
 ```bash

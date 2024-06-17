@@ -1,0 +1,43 @@
+couchdb_title: &couchdb_title
+  - type: text
+    name: title
+    label: Storage Title
+
+# 2x2 grid
+couchdb_params: &couchdb_params
+  - type: text
+    name: user
+    label: User
+  - type: password
+    name: password
+    label: Password
+    autoComplete: "new-password"
+  - type: text
+    name: host
+    label: Host
+    placeholder: http://localhost
+  - type: text
+    name: port
+    label: Port
+    placeholder: 5984
+  - type: text
+    name: db
+    label: Database
+
+ImportStorage:
+  # Title
+  - columnCount: 1
+    fields: *couchdb_title
+  # Path, Password, Host and Port
+  - columnCount: 2
+    fields: *couchdb_params
+  - columnCount: 1
+    fields:
+      - type: text
+        name: prefix_filter
+        label: Prefix Filter
+        placeholder: 'tasks-'
+
+ExportStorage:
+  - columnCount: 2
+    fields: *couchdb_params

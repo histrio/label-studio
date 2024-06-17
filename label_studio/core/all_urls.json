@@ -864,6 +864,66 @@
         "decorators": ""
     },
     {
+        "url": "/api/storages/couchdb/",
+        "module": "io_storages.couchdb.api.CouchDBImportStorageListAPI",
+        "name": "storages:api:storage-couchdb-list",
+        "decorators": ""
+    },
+    {
+        "url": "/api/storages/couchdb/<int:pk>",
+        "module": "io_storages.couchdb.api.CouchDBImportStorageDetailAPI",
+        "name": "storages:api:storage-couchdb-detail",
+        "decorators": ""
+    },
+    {
+        "url": "/api/storages/couchdb/<int:pk>/sync",
+        "module": "io_storages.couchdb.api.CouchDBImportStorageSyncAPI",
+        "name": "storages:api:storage-couchdb-sync",
+        "decorators": ""
+    },
+    {
+        "url": "/api/storages/couchdb/validate",
+        "module": "io_storages.couchdb.api.CouchDBImportStorageValidateAPI",
+        "name": "storages:api:storage-couchdb-validate",
+        "decorators": ""
+    },
+    {
+        "url": "/api/storages/couchdb/form",
+        "module": "io_storages.couchdb.api.CouchDBImportStorageFormLayoutAPI",
+        "name": "storages:api:storage-couchdb-form",
+        "decorators": ""
+    },
+    {
+        "url": "/api/storages/export/couchdb",
+        "module": "io_storages.couchdb.api.CouchDBExportStorageListAPI",
+        "name": "storages:api:export-storage-couchdb-list",
+        "decorators": ""
+    },
+    {
+        "url": "/api/storages/export/couchdb/<int:pk>",
+        "module": "io_storages.couchdb.api.CouchDBExportStorageDetailAPI",
+        "name": "storages:api:export-storage-couchdb-detail",
+        "decorators": ""
+    },
+    {
+        "url": "/api/storages/export/couchdb/<int:pk>/sync",
+        "module": "io_storages.couchdb.api.CouchDBExportStorageSyncAPI",
+        "name": "storages:api:export-storage-couchdb-sync",
+        "decorators": ""
+    },
+    {
+        "url": "/api/storages/export/couchdb/validate",
+        "module": "io_storages.couchdb.api.CouchDBExportStorageValidateAPI",
+        "name": "storages:api:export-storage-couchdb-validate",
+        "decorators": ""
+    },
+    {
+        "url": "/api/storages/export/couchdb/form",
+        "module": "io_storages.couchdb.api.CouchDBExportStorageFormLayoutAPI",
+        "name": "storages:api:export-storage-couchdb-form",
+        "decorators": ""
+    },
+    {
         "url": "/api/storages/localfiles/",
         "module": "io_storages.localfiles.api.LocalFilesImportStorageListAPI",
         "name": "storages:api:storage-localfiles-list",

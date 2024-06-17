@@ -13,6 +13,7 @@ from io_storages.azure_blob.models import AzureBlobImportStorageLink
 from io_storages.gcs.models import GCSImportStorageLink
 from io_storages.localfiles.models import LocalFilesImportStorageLink
 from io_storages.redis.models import RedisImportStorageLink
+from io_storages.couchdb.models import CouchDBImportStorageLink
 from io_storages.s3.models import S3ImportStorageLink
 from tasks.models import Task
 
@@ -138,6 +139,7 @@ def restore_storage_links_for_duplicated_tasks(duplicates) -> None:
         'io_storages_azureblobimportstoragelink': AzureBlobImportStorageLink,
         'io_storages_localfilesimportstoragelink': LocalFilesImportStorageLink,
         'io_storages_redisimportstoragelink': RedisImportStorageLink,
+        'io_storages_couchdbimportstoragelink': CouchDBImportStorageLink,
         # 'lse_io_storages_lses3importstoragelink'  # not supported yet
     }
 

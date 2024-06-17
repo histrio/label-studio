@@ -27,6 +27,13 @@ from .redis.models import (  # noqa: F401
     RedisExportStorageLink,
 )
 
+from .couchdb.models import (  # noqa: F401
+    CouchDBImportStorage,
+    CouchDBImportStorageLink,
+    CouchDBExportStorage,
+    CouchDBExportStorageLink,
+)
+
 from label_studio.core.utils.common import load_func
 
 

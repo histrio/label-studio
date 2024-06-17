@@ -221,6 +221,26 @@ def redis_client_mock():
         yield
 
 
+@contextmanager
+def couchdb_client_mock():
+    from io_storages.couchdb.models import CouchDBStorageMixin
+
+    class DummyCouchDB:
+        def __init__(self):
+            self.data = {}
+
+        def get(self, key):
+            return self.data.get(key)
+
+        def put(self, key, value):
+            self.data[key] = value
+
+    couchdb = DummyCouchDB()
+
+    with mock.patch.object(CouchDBStorageMixin, 'get_couchdb_connection', return_value=couchdb):
+        yield
+
+
 def upload_data(client, project, tasks):
     tasks = TaskWithAnnotationsSerializer(tasks, many=True).data
     data = [{'data': task['data'], 'annotations': task['annotations']} for task in tasks]
