@@ -30,7 +30,7 @@ Get data into Label Studio by importing files, referencing URLs, or syncing with
 <div class="opensource-only">
 
 !!! error Enterprise
-    If your data is stored in Google Cloud, AWS, or Azure, you can [import your unstructured data as a dataset in Label Studio Enterprise](https://docs.humansignal.com/guide/dataset_create). 
+    If your data is stored in Google Cloud, AWS, Azure or CouchDB you can [import your unstructured data as a dataset in Label Studio Enterprise](https://docs.humansignal.com/guide/dataset_create). 
     
     From here, you can use semantic search and similarity search to curate data for labeling, which can then be added to different projects as tasks. For more information, see [Data Discovery overview](https://docs.humansignal.com/guide/dataset_overview).
 

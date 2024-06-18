@@ -208,7 +208,7 @@ DJANGO_DB=default DJANGO_SETTINGS_MODULE=core.settings.label_studio pytest -vv
 - **Streamlined design** helps you focus on your task, not how to use the software.
 - **Configurable label formats** let you customize the visual interface to meet your specific labeling needs.
 - **Support for multiple data types** including images, audio, text, HTML, time-series, and video. 
-- **Import from files or from cloud storage** in Amazon AWS S3, Google Cloud Storage, or JSON, CSV, TSV, RAR, and ZIP archives. 
+- **Import from files or from cloud storage** in Amazon AWS S3, Google Cloud Storage, CouchDB or JSON, CSV, TSV, RAR, and ZIP archives. 
 - **Integration with machine learning models** so that you can visualize and compare predictions from different models and perform pre-labeling.
 - **Embed it in your data pipeline** REST API makes it easy to make it a part of your pipeline
 

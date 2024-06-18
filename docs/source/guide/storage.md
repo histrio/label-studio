@@ -18,6 +18,7 @@ Set up the following cloud and other storage systems with Label Studio:
 - [Google Cloud Storage](#Google-Cloud-Storage)
 - [Microsoft Azure Blob storage](#Microsoft-Azure-Blob-storage)
 - [Redis database](#Redis-database)
+- [CouchDB storage](#Couchdb-storage)
 - [Local storage](#Local-storage) <div class="enterprise-only">(for On-prem only)</div>
 
 ## Troubleshooting
@@ -557,6 +558,83 @@ You can also create a storage connection using the Label Studio API.
 - See [Create export storage](/api#operation/api_storages_export_redis_create) and after annotating, [sync the export storage](/api#operation/api_storages_export_redis_sync_create).
 
 
+## CouchDB storage
+
+Integrate [CouchDB](https://couchdb.apache.org/) with Label Studio to dynamically import tasks and export annotations. This integration 
+allows you to store and manage tasks and annotations within a CouchDB database.
+
+### Prerequisites
+
+To connect your CouchDB database with Label Studio, ensure the following:
+
+- **CouchDB installation and configuration:** Make sure you have a CouchDB server running and accessible.
+- **Database and user setup:** Create a database and user with appropriate permissions to access and manipulate data. See the [CouchDB documentation](https://docs.couchdb.org/en/stable/intro/tour.html) for details on setting up your CouchDB server.
+
+### Set up connection in the Label Studio UI
+
+In the Label Studio UI, do the following to set up the connection:
+
+1. Open Label Studio in your web browser.
+2. For a specific project, open **Settings > Cloud Storage**.
+3. Click **Add Source Storage*.
+4. In the dialog box that appears, select **CouchDB** as the storage type.
+5. In the **Storage Title** field, type a name for the storage to appear in the Label Studio UI.
+6. Specify the CouchDB connection parameters:
+  - **Host:** The hostname or IP address of your CouchDB server.
+  - **Port:** The port number on which your CouchDB server is running.
+  - **Database Name:** The name of the CouchDB database you want to use.
+  - **Username:** The username for accessing the CouchDB database.
+  - **Password:** The password for accessing the CouchDB database.
+7. Adjust the remaining optional parameters:
+  - In the **Prefix Filter** field, specify a prefix to filter database docs. Keep empty to collect all objects.
+  - Enable **Treat every database document as a source file** if your database contains documents such as JSON files with tasks. This setting creates a URL for each database document to use for labeling. Leave this option disabled if you have multiple JSON files in the database with one task per JSON file.
+8. Click **Add Storage**.
+9. Repeat these steps for **Target Storage** to sync completed data annotations to the CouchDB database.
+
+After adding the storage, click **Sync** to collect tasks from the database, or make an API call to [sync import storage](/api#operation/api_storages_couchdb_sync_create).
+
+### Add storage with the Label Studio API
+
+You can also create a storage connection using the Label Studio API.
+
+- See [Create new import storage](/api#operation/api_storages_couchdb_create) then [sync the import storage](/api#operation/api_storages_couchdb_sync_create).
+- See [Create export storage](/api#operation/api_storages_export_couchdb_create) and after annotating, [sync the export storage](/api#operation/api_storages_export_couchdb_sync_create).
+
+### CouchDB Task Format
+
+Label Studio supports documents in CouchDB that should represent tasks in JSON format.
+
+For example:
+
+```json
+{
+  "_id": "task_01",
+  "type": "task",
+  "data": {
+    "image": "http://example.com/1.jpg",
+    "text": "opossums are awesome"
+  }
+}
+```
+
+``` json
+{
+  "_id": "task_02",
+  "type": "task",
+  "data": {
+    "image": "http://example.com/2.jpg",
+    "text": "cats are awesome"
+  }
+}
+```
+
+
+Ensure that each document in the CouchDB database represents a single task with a unique **`_id`**.
+
+### Troubleshooting CouchDB Storage
+
+For troubleshooting issues related to CouchDB storage, refer to the [Troubleshooting Import, Export, and Storage](https://support.humansignal.com/hc/en-us/sections/16982163062029-Import-Export-Storage) section in the HumanSignal support center.
+
 ## Local storage
 
 <div class="enterprise-only">
@@ -648,8 +726,8 @@ This video tutorial demonstrates how to setup Local Storage from scratch and imp
 
 ### Add storage with the Label Studio API
 You can also create a storage connection using the Label Studio API. 
-- See [Create new import storage](/api#operation/api_storages_localfiles_create) then [sync the import storage](/api#operation/api_storages_localfiles_sync_create). 
-- See [Create export storage](/api#operation/api_storages_export_localfiles_create) and after annotating, [sync the export storage](/api#operation/api_storages_export_localfiles_sync_create).
+- see [create new import storage](/api#operation/api_storages_localfiles_create) then [sync the import storage](/api#operation/api_storages_localfiles_sync_create). 
+- see [create export storage](/api#operation/api_storages_export_localfiles_create) and after annotating, [sync the export storage](/api#operation/api_storages_export_localfiles_sync_create).
 
 ### Set up local storage with Docker
 If you're using Label Studio in Docker, you need to mount the local directory that you want to access as a volume when you start the Docker container. See [Run Label Studio on Docker and use local storage](start.html#Run-Label-Studio-on-Docker-and-use-local-storage).
